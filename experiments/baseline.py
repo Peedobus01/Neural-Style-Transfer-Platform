@@ -16,13 +16,13 @@ def run_baseline_experiment():
     # Initialize the pipeline
     pipeline = StyleTransferPipeline()
     
-    # NOTE: You need to upload two images to your Colab environment or specify their paths here
-    content_path = "content.jpg"
-    style_path = "style.jpg"
+    # Point to the storage/uploads folder where you uploaded the files
+    content_path = "storage/uploads/content.jpg"
+    style_path = "storage/uploads/style.jpg"
     
     import os
     if not os.path.exists(content_path) or not os.path.exists(style_path):
-        print("ERROR: Please upload 'content.jpg' and 'style.jpg' to the folder before running this script.")
+        print(f"ERROR: Could not find images! Make sure they are named EXACTLY 'content.jpg' and 'style.jpg' and are placed inside the 'storage/uploads/' folder.")
         return
 
     # Read the files as bytes
