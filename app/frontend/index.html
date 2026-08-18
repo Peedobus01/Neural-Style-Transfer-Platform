@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Style Transfer Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Neural Style Transfer</h1>
+            <p>Transform your photos into stunning artworks.</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box" id="content-upload">
+                    <h3>Content Image</h3>
+                    <input type="file" id="content-image" accept="image/*">
+                    <div class="preview" id="content-preview"></div>
+                </div>
+                <div class="upload-box" id="style-upload">
+                    <h3>Style Image</h3>
+                    <input type="file" id="style-image" accept="image/*">
+                    <div class="preview" id="style-preview"></div>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-group">
+                    <label for="alpha">Content Weight (&alpha;)</label>
+                    <input type="range" id="alpha" min="1" max="100" value="1">
+                    <span id="alpha-val">1</span>
+                </div>
+                <div class="control-group">
+                    <label for="beta">Style Weight (&beta;)</label>
+                    <input type="range" id="beta" min="1000" max="10000000" value="1000000" step="1000">
+                    <span id="beta-val">1000000</span>
+                </div>
+                <div class="control-group checkbox-group">
+                    <input type="checkbox" id="preserve-colors">
+                    <label for="preserve-colors">Preserve Original Colors</label>
+                </div>
+                <button id="stylize-btn">Stylize Image</button>
+            </div>
+
+            <div class="output-section">
+                <h2>Result</h2>
+                <div class="result-box">
+                    <img id="result-image" style="display:none;">
+                    <div class="loader" id="loader" style="display:none;">Processing...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
