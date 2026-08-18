@@ -16,13 +16,20 @@ def run_baseline_experiment():
     # Initialize the pipeline
     pipeline = StyleTransferPipeline()
     
-    # Point to the storage/uploads folder where you uploaded the files
-    content_path = "storage/uploads/content.jpg"
-    style_path = "storage/uploads/style.jpg"
-    
     import os
-    if not os.path.exists(content_path) or not os.path.exists(style_path):
-        print(f"ERROR: Could not find images! Make sure they are named EXACTLY 'content.jpg' and 'style.jpg' and are placed inside the 'storage/uploads/' folder.")
+    
+    # Auto-detect image locations because Colab file uploads can be tricky
+    def find_file(filename):
+        for root, dirs, files in os.walk('/content'):
+            if filename in files:
+                return os.path.join(root, filename)
+        return None
+
+    content_path = find_file("content.jpg")
+    style_path = find_file("style.jpg")
+    
+    if not content_path or not style_path:
+        print(f"ERROR: Could not find images! Please make sure you uploaded them.")
         return
 
     # Read the files as bytes
