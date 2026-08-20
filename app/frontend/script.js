@@ -36,13 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        const intermediateFrames = document.getElementById('intermediate-frames').value;
         const formData = new FormData();
         formData.append('content_image', contentInput.files[0]);
         formData.append('style_image', styleInput.files[0]);
         formData.append('alpha', document.getElementById('alpha').value);
         formData.append('beta', document.getElementById('beta').value);
         formData.append('num_steps', document.getElementById('num-steps').value);
-        formData.append('intermediate_frames', document.getElementById('intermediate-frames').value);
+        formData.append('intermediate_frames', intermediateFrames);
 
         const loader = document.getElementById('loader');
         const progressContainer = document.getElementById('progress-container');
@@ -52,6 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const resultGrid = document.getElementById('result-grid');
         
         resultGrid.innerHTML = ''; // Clear previous images
+        resultGrid.className = parseInt(intermediateFrames) > 0 ? 'result-grid multi-image' : 'result-grid single-image';
+
         loader.style.display = 'block';
         progressContainer.style.display = 'block';
         progressFill.style.width = '0%';
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             // Update progress
                             if (data.step && data.total) {
-                                const percent = (data.step / data.total) * 100;
+                                const percent = Math.min(100, (data.step / data.total) * 100);
                                 progressFill.style.width = `${percent}%`;
                                 progressText.textContent = `Epoch ${data.step} / ${data.total}`;
                             }

@@ -53,15 +53,17 @@ class StyleTransferPipeline:
                     for c, (mean, std) in enumerate(zip([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])):
                         generated_img[:, c, :, :].clamp_((0.0 - mean) / std, (1.0 - mean) / std)
                         
-                if step % 50 == 0:
+                if step % 10 == 0 or step == num_steps:
                     c_loss = getattr(closure, 'content_loss', 0)
                     s_loss = getattr(closure, 'style_loss', 0)
                     print(f"Epoch {step}: Total={loss.item():.2f} | Content={c_loss:.2f} | Style={s_loss:.2f}")
                 
-                # Yield progress updates
-                if step % 50 == 0 or step == num_steps:
-                    send_image = (step % yield_interval == 0 or step == num_steps)
-                    yield step, num_steps, tensor_to_image(generated_img) if send_image else None
+                # Yield progress updates and images
+                is_image_step = (step % yield_interval == 0) or (step == num_steps)
+                is_progress_step = (step % 10 == 0) or is_image_step
+                
+                if is_progress_step:
+                    yield step, num_steps, tensor_to_image(generated_img) if is_image_step else None
             
         if optimizer_type.lower() == "lbfgs":
             yield num_steps, num_steps, tensor_to_image(generated_img)
