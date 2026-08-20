@@ -29,28 +29,52 @@
             </div>
 
             <div class="controls-section">
-                <div class="control-group">
-                    <label for="alpha">Content Weight (&alpha;)</label>
-                    <input type="range" id="alpha" min="1" max="100" value="1">
-                    <span id="alpha-val">1</span>
+                <div class="control-row">
+                    <div class="control-group">
+                        <label for="alpha">Content Weight (&alpha;)</label>
+                        <input type="range" id="alpha" min="1" max="100" value="10">
+                        <span id="alpha-val">10</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="beta">Style Weight (&beta;)</label>
+                        <input type="range" id="beta" min="1000" max="1000000000" value="100000000" step="100000">
+                        <span id="beta-val">100000000</span>
+                    </div>
                 </div>
-                <div class="control-group">
-                    <label for="beta">Style Weight (&beta;)</label>
-                    <input type="range" id="beta" min="1000" max="10000000" value="1000000" step="1000">
-                    <span id="beta-val">1000000</span>
+                <div class="control-row">
+                    <div class="control-group">
+                        <label for="num-steps">Total Epochs</label>
+                        <input type="number" id="num-steps" min="50" max="5000" value="2500">
+                    </div>
+                    <div class="control-group">
+                        <label for="intermediate-frames">Live Previews</label>
+                        <select id="intermediate-frames">
+                            <option value="0">0 (Fastest, no preview)</option>
+                            <option value="1">1 update</option>
+                            <option value="2">2 updates</option>
+                            <option value="3">3 updates</option>
+                            <option value="4" selected>4 updates (Best)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="control-group checkbox-group">
                     <input type="checkbox" id="preserve-colors">
                     <label for="preserve-colors">Preserve Original Colors</label>
                 </div>
-                <button id="stylize-btn">Stylize Image</button>
+                <button id="stylize-btn">Start Neural Style Transfer</button>
             </div>
 
             <div class="output-section">
                 <h2>Result</h2>
+                <div class="progress-container" id="progress-container" style="display:none;">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-fill"></div>
+                    </div>
+                    <p class="progress-text" id="progress-text">Epoch 0 / 2500</p>
+                </div>
                 <div class="result-box">
-                    <img id="result-image" style="display:none;">
-                    <div class="loader" id="loader" style="display:none;">Processing...</div>
+                    <img id="result-image" style="display:none; transition: opacity 0.5s ease-in-out;">
+                    <div class="loader" id="loader" style="display:none;">Initializing Model...</div>
                 </div>
             </div>
         </main>

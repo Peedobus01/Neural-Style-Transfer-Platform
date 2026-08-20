@@ -41,13 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('style_image', styleInput.files[0]);
         formData.append('alpha', alphaInput.value);
         formData.append('beta', betaInput.value);
+        formData.append('num_steps', document.getElementById('num-steps').value);
+        formData.append('intermediate_frames', document.getElementById('intermediate-frames').value);
         formData.append('preserve_colors', document.getElementById('preserve-colors').checked);
 
         const loader = document.getElementById('loader');
         const resultImage = document.getElementById('result-image');
+        const progressContainer = document.getElementById('progress-container');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        const stylizeBtn = document.getElementById('stylize-btn');
         
         loader.style.display = 'block';
         resultImage.style.display = 'none';
+        progressContainer.style.display = 'block';
+        progressFill.style.width = '0%';
+        progressText.textContent = 'Initializing Model...';
+        stylizeBtn.disabled = true;
 
         try {
             const response = await fetch('http://localhost:8000/api/stylize', {
@@ -55,20 +65,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: formData
             });
 
-            if (response.ok) {
-                // Handle the image blob
-                const blob = await response.blob();
-                const url = URL.createObjectURL(blob);
-                resultImage.src = url;
-                resultImage.style.display = 'block';
-            } else {
-                alert('Error processing image.');
+            if (!response.ok) {
+                alert('Error starting style transfer.');
+                return;
+            }
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder("utf-8");
+            let buffer = "";
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+                let lines = buffer.split("\n\n");
+                
+                // Keep the last incomplete chunk in the buffer
+                buffer = lines.pop(); 
+
+                for (let line of lines) {
+                    if (line.startsWith("data: ")) {
+                        const dataStr = line.substring(6); // Remove "data: "
+                        try {
+                            const data = JSON.parse(dataStr);
+                            if (data.error) {
+                                alert("Error: " + data.error);
+                                break;
+                            }
+                            
+                            // Update progress
+                            if (data.step && data.total) {
+                                loader.style.display = 'none';
+                                const percent = (data.step / data.total) * 100;
+                                progressFill.style.width = `${percent}%`;
+                                progressText.textContent = `Epoch ${data.step} / ${data.total}`;
+                            }
+                            
+                            // Update image if present
+                            if (data.image) {
+                                resultImage.style.opacity = '0'; // For smooth crossfade
+                                setTimeout(() => {
+                                    resultImage.src = data.image;
+                                    resultImage.style.display = 'block';
+                                    resultImage.style.opacity = '1';
+                                }, 50);
+                            }
+                            
+                        } catch (e) {
+                            console.error("Failed to parse SSE event:", e, dataStr);
+                        }
+                    }
+                }
             }
         } catch (error) {
             console.error('API Error:', error);
             alert('Failed to connect to the backend.');
         } finally {
             loader.style.display = 'none';
+            stylizeBtn.disabled = false;
         }
     });
 });
