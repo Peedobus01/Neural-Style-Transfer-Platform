@@ -2,7 +2,7 @@ import torch
 import torch.optim as optim
 from typing import Callable
 
-def get_optimizer(image: torch.Tensor, optimizer_type: str = "adam", lr: float = 0.05) -> torch.optim.Optimizer:
+def get_optimizer(image: torch.Tensor, optimizer_type: str = "adam", lr: float = 0.02) -> torch.optim.Optimizer:
     if optimizer_type.lower() == "lbfgs":
         return optim.LBFGS([image], max_iter=1)
     else:

@@ -49,6 +49,8 @@ class StyleTransferPipeline:
             for step in range(num_steps):
                 loss = closure()
                 optimizer.step()
+                with torch.no_grad():
+                    generated_img.clamp_(0, 1)
                 if step % 50 == 0:
                     print(f"Epoch {step}: Total Loss = {loss.item():.4f}")
             
