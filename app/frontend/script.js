@@ -59,8 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
         progressText.textContent = 'Initializing Model...';
         stylizeBtn.disabled = true;
 
+        const backendUrlInput = document.getElementById('backend-url').value.replace(/\/$/, '');
+        const apiUrl = backendUrlInput ? `${backendUrlInput}/api/stylize` : '/api/stylize';
+
         try {
-            const response = await fetch('/api/stylize', {
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 body: formData
             });
