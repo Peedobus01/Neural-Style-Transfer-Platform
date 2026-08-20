@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stylizeBtn.disabled = true;
 
         try {
-            const response = await fetch('http://localhost:8000/api/stylize', {
+            const response = await fetch('/api/stylize', {
                 method: 'POST',
                 body: formData
             });

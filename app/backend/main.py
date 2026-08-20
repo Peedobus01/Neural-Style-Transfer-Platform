@@ -1,9 +1,11 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 import io
 import traceback
+import os
 
 from app.ml.pipeline import StyleTransferPipeline
 
@@ -18,6 +20,10 @@ app.add_middleware(
 )
 
 pipeline = StyleTransferPipeline()
+
+# Ensure storage directories exist
+os.makedirs("storage/uploads", exist_ok=True)
+os.makedirs("storage/outputs", exist_ok=True)
 
 @app.post("/api/stylize")
 async def stylize_image(
@@ -62,8 +68,12 @@ async def stylize_image(
         return StreamingResponse(generate_sse(), media_type="text/event-stream")
         
     except Exception as e:
+        import traceback
         traceback.print_exc()
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+# Mount the static frontend directory so it is served by the backend
+app.mount("/", StaticFiles(directory="app/frontend", html=True), name="frontend")
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
