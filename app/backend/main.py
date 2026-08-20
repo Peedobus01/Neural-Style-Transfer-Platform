@@ -72,8 +72,18 @@ async def stylize_image(
         traceback.print_exc()
         return JSONResponse(status_code=500, content={"error": str(e)})
 
-# Mount the static frontend directory so it is served by the backend
-app.mount("/", StaticFiles(directory="app/frontend", html=True), name="frontend")
+from fastapi.responses import FileResponse
+
+@app.get("/")
+async def serve_index():
+    return FileResponse("app/frontend/index.html")
+
+@app.get("/{filename}")
+async def serve_file(filename: str):
+    file_path = os.path.join("app/frontend", filename)
+    if os.path.exists(file_path) and os.path.isfile(file_path):
+        return FileResponse(file_path)
+    return JSONResponse(status_code=404, content={"error": "Not found"})
 
 if __name__ == "__main__":
     uvicorn.run("app.backend.main:app", host="0.0.0.0", port=8000, reload=True)
