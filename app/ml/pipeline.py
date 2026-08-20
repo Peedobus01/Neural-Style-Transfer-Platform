@@ -58,6 +58,8 @@ class StyleTransferPipeline:
                         generated_img[:, c, :, :].clamp_((0.0 - mean) / std, (1.0 - mean) / std)
                         
                 if step % 50 == 0:
-                    print(f"Epoch {step}: Total Loss = {loss.item():.4f}")
+                    c_loss = getattr(closure, 'content_loss', 0)
+                    s_loss = getattr(closure, 'style_loss', 0)
+                    print(f"Epoch {step}: Total={loss.item():.2f} | Content={c_loss:.2f} | Style={s_loss:.2f}")
             
         return tensor_to_image(generated_img)

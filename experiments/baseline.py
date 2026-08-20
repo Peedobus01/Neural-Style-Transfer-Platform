@@ -44,11 +44,11 @@ def run_baseline_experiment():
     result_img = pipeline.run(
         content_bytes=content_bytes,
         style_bytes=style_bytes,
-        alpha=1.0,
-        beta=1000000.0,
-        num_steps=1000,
+        alpha=10.0,
+        beta=1e8,
+        num_steps=2500,
         optimizer_type="adam",
-        noise_ratio=0.1
+        noise_ratio=0.5
     )
     
     # Save the output

@@ -24,6 +24,9 @@ def get_closure(optimizer, image, feature_extractor, content_features, style_gra
         total_loss = (alpha * content_loss) + (beta * style_loss) + (tv_weight * tv_loss)
         total_loss.backward()
         
+        closure.content_loss = (alpha * content_loss).item()
+        closure.style_loss = (beta * style_loss).item()
+        
         return total_loss
         
     return closure

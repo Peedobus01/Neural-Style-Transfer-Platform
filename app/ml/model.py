@@ -31,6 +31,8 @@ class VGGFeatureExtractor(nn.Module):
                 layer = nn.ReLU(inplace=False)
             elif isinstance(layer, nn.MaxPool2d):
                 name = f'pool{i}'
+                # Replace MaxPool with AvgPool for smoother texture synthesis
+                layer = nn.AvgPool2d(kernel_size=2, stride=2)
                 i += 1
                 j = 1
             elif isinstance(layer, nn.BatchNorm2d):
