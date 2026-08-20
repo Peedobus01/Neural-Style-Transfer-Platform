@@ -16,21 +16,19 @@ def run_baseline_experiment():
     # Initialize the pipeline
     pipeline = StyleTransferPipeline()
     
-    import os
+    import glob
     
-    # Auto-detect image locations because Colab file uploads can be tricky
-    def find_file(filename):
-        for root, dirs, files in os.walk('/content'):
-            if filename in files:
-                return os.path.join(root, filename)
-        return None
-
-    content_path = find_file("content.jpg")
-    style_path = find_file("style.jpg")
+    # Grab the first two images found in storage/uploads/ regardless of their name
+    upload_files = [f for f in glob.glob("storage/uploads/*") if not f.endswith('.keep')]
     
-    if not content_path or not style_path:
-        print(f"ERROR: Could not find images! Please make sure you uploaded them.")
+    if len(upload_files) < 2:
+        print(f"ERROR: Could not find 2 images! Found {len(upload_files)}. Please put your content and style images in the storage/uploads/ folder.")
         return
+        
+    content_path = upload_files[0]
+    style_path = upload_files[1]
+    
+    print(f"Found images! \nContent: {content_path}\nStyle: {style_path}")
 
     # Read the files as bytes
     with open(content_path, "rb") as f:
@@ -38,18 +36,21 @@ def run_baseline_experiment():
     with open(style_path, "rb") as f:
         style_bytes = f.read()
 
-    # Run the pipeline with higher steps for the GPU
-    print("Processing image... (this should be very fast on a T4 GPU!)")
+    print("Processing image... (Running full 1000 epochs on Adam!)")
     result_img = pipeline.run(
         content_bytes=content_bytes,
         style_bytes=style_bytes,
         alpha=1.0,
         beta=1000000.0,
-        num_steps=300
+        num_steps=1000,
+        optimizer_type="adam",
+        noise_ratio=0.1
     )
     
     # Save the output
     output_path = "storage/outputs/baseline_result.jpg"
     result_img.save(output_path)
     print(f"Success! Stylized image saved to: {output_path}")
+
+if __name__ == "__main__":
     run_baseline_experiment()
