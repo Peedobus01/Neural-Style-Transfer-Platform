@@ -16,17 +16,21 @@ def run_baseline_experiment():
     # Initialize the pipeline
     pipeline = StyleTransferPipeline()
     
-    import glob
+    import argparse
+    import os
     
-    # Grab the first two images found in storage/uploads/ regardless of their name
-    upload_files = [f for f in glob.glob("storage/uploads/*") if not f.endswith('.keep')]
+    parser = argparse.ArgumentParser(description="Run Neural Style Transfer")
+    parser.add_argument("--content", default="storage/uploads/content.jpg", help="Path to content image")
+    parser.add_argument("--style", default="storage/uploads/style.jpg", help="Path to style image")
+    args = parser.parse_args()
     
-    if len(upload_files) < 2:
-        print(f"ERROR: Could not find 2 images! Found {len(upload_files)}. Please put your content and style images in the storage/uploads/ folder.")
+    content_path = args.content
+    style_path = args.style
+    
+    if not os.path.exists(content_path) or not os.path.exists(style_path):
+        print(f"ERROR: Could not find images!\nExpected Content: {content_path}\nExpected Style: {style_path}")
+        print("Please rename your images to 'content.jpg' and 'style.jpg' and place them in the storage/uploads/ folder.")
         return
-        
-    content_path = upload_files[0]
-    style_path = upload_files[1]
     
     print(f"Found images! \nContent: {content_path}\nStyle: {style_path}")
 
