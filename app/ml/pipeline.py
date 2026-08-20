@@ -49,8 +49,14 @@ class StyleTransferPipeline:
             for step in range(num_steps):
                 loss = closure()
                 optimizer.step()
+                
+                # We must clamp the image to keep Adam stable, but because the image
+                # is ImageNet normalized, the valid bounds are not [0, 1]. 
+                # We must calculate the valid bounds per channel:
                 with torch.no_grad():
-                    generated_img.clamp_(0, 1)
+                    for c, (mean, std) in enumerate(zip([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])):
+                        generated_img[:, c, :, :].clamp_((0.0 - mean) / std, (1.0 - mean) / std)
+                        
                 if step % 50 == 0:
                     print(f"Epoch {step}: Total Loss = {loss.item():.4f}")
             
