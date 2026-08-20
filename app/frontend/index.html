@@ -12,10 +12,6 @@
         <header>
             <h1>Neural Style Transfer</h1>
             <p>Transform your photos into stunning artworks.</p>
-            <div style="margin-top: 10px;">
-                <label for="backend-url" style="font-size: 0.9em;">Lightning AI Backend URL:</label>
-                <input type="text" id="backend-url" placeholder="e.g. https://xyz.a.pinggy.io" style="padding: 5px; width: 300px; border-radius: 5px; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: white;">
-            </div>
         </header>
 
         <main>
@@ -61,9 +57,6 @@
                         </select>
                     </div>
                 </div>
-                <div class="control-group checkbox-group">
-                    <input type="checkbox" id="preserve-colors">
-                    <label for="preserve-colors">Preserve Original Colors</label>
                 </div>
                 <button id="stylize-btn">Start Neural Style Transfer</button>
             </div>
@@ -76,9 +69,9 @@
                     </div>
                     <p class="progress-text" id="progress-text">Epoch 0 / 2500</p>
                 </div>
-                <div class="result-box">
-                    <img id="result-image" style="display:none; transition: opacity 0.5s ease-in-out;">
-                    <div class="loader" id="loader" style="display:none;">Initializing Model...</div>
+                <div class="loader" id="loader" style="display:none;">Initializing Model...</div>
+                <div class="result-grid" id="result-grid">
+                    <!-- Dynamic images will be added here -->
                 </div>
             </div>
         </main>

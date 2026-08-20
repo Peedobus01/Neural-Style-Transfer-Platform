@@ -39,31 +39,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData();
         formData.append('content_image', contentInput.files[0]);
         formData.append('style_image', styleInput.files[0]);
-        formData.append('alpha', alphaInput.value);
-        formData.append('beta', betaInput.value);
+        formData.append('alpha', document.getElementById('alpha').value);
+        formData.append('beta', document.getElementById('beta').value);
         formData.append('num_steps', document.getElementById('num-steps').value);
         formData.append('intermediate_frames', document.getElementById('intermediate-frames').value);
-        formData.append('preserve_colors', document.getElementById('preserve-colors').checked);
 
         const loader = document.getElementById('loader');
-        const resultImage = document.getElementById('result-image');
         const progressContainer = document.getElementById('progress-container');
         const progressFill = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
         const stylizeBtn = document.getElementById('stylize-btn');
+        const resultGrid = document.getElementById('result-grid');
         
+        resultGrid.innerHTML = ''; // Clear previous images
         loader.style.display = 'block';
-        resultImage.style.display = 'none';
         progressContainer.style.display = 'block';
         progressFill.style.width = '0%';
         progressText.textContent = 'Initializing Model...';
         stylizeBtn.disabled = true;
 
-        const backendUrlInput = document.getElementById('backend-url').value.replace(/\/$/, '');
-        const apiUrl = backendUrlInput ? `${backendUrlInput}/api/stylize` : '/api/stylize';
-
         try {
-            const response = await fetch(apiUrl, {
+            const response = await fetch('/api/stylize', {
                 method: 'POST',
                 body: formData
             });
@@ -99,20 +95,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             // Update progress
                             if (data.step && data.total) {
-                                loader.style.display = 'none';
                                 const percent = (data.step / data.total) * 100;
                                 progressFill.style.width = `${percent}%`;
                                 progressText.textContent = `Epoch ${data.step} / ${data.total}`;
                             }
                             
-                            // Update image if present
+                            // Append new image to grid if present
                             if (data.image) {
-                                resultImage.style.opacity = '0'; // For smooth crossfade
-                                setTimeout(() => {
-                                    resultImage.src = data.image;
-                                    resultImage.style.display = 'block';
-                                    resultImage.style.opacity = '1';
-                                }, 50);
+                                loader.style.display = 'none';
+                                
+                                const itemDiv = document.createElement('div');
+                                itemDiv.className = 'result-item';
+                                
+                                const img = document.createElement('img');
+                                img.src = data.image;
+                                
+                                const label = document.createElement('span');
+                                label.textContent = `Epoch ${data.step}`;
+                                
+                                itemDiv.appendChild(img);
+                                itemDiv.appendChild(label);
+                                resultGrid.appendChild(itemDiv);
                             }
                             
                         } catch (e) {
