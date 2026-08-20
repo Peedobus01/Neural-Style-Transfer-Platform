@@ -73,4 +73,6 @@ class StyleTransferPipeline:
         for step, total, img in self.run_stream(*args, **kwargs):
             if img is not None:
                 final_image = img
+        if final_image is None:
+            raise RuntimeError("Optimization failed to produce an image.")
         return final_image
