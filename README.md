@@ -95,7 +95,7 @@ This guarantees mathematically that the user will receive exactly the requested 
 **Epoch 3000**  
 <img src="Readme_images/epoch3000.png" width="400">
 
-**Epoch 5000 (Final Result)**  
+**Epoch 5000**  
 <img src="Readme_images/epoch5000.png" width="400">
 
 ---
@@ -104,9 +104,9 @@ This guarantees mathematically that the user will receive exactly the requested 
 
 | Content Image | Style Image | Generated Result |
 | :---: | :---: | :---: |
-| <img src="Readme_images/content1.png" width="250"> | <img src="Readme_images/style1.png" width="250"> | <img src="Readme_images/result1.png" width="250"> |
-| <img src="Readme_images/content2.png" width="250"> | <img src="Readme_images/style2.png" width="250"> | <img src="Readme_images/result2.png" width="250"> |
-| <img src="Readme_images/content3.png" width="250"> | <img src="Readme_images/style3.png" width="250"> | <img src="Readme_images/result3.png" width="250"> |
+| <img src="Readme_images/Kapili.jng" width="250"> | <img src="Readme_images/kashi_kari.jpg" width="250"> | <img src="Readme_images/kapili1.png" width="250"> |
+| <img src="Readme_images/thor.jpeg" width="250"> | <img src="Readme_images/style2.jpg" width="250"> | <img src="Readme_images/thor1.png" width="250"> |
+| <img src="Readme_images/mega_raq.jpg" width="250"> | <img src="Readme_images/style3.jpg" width="250"> | <img src="Readme_images/mega_raq1.png" width="250"> |
 
 ---
 
