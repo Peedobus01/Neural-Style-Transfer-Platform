@@ -1,6 +1,4 @@
-# Neural Style Transfer Platform 🎨🧠
-
-![NST Banner](path/to/your/header_image.jpg) <!-- USER: Replace with your best generated image! -->
+# Neural Style Transfer Platform
 
 A high-performance, production-ready Neural Style Transfer (NST) web application built using **PyTorch**, **FastAPI**, and a **Vanilla JS Glassmorphism UI**. This platform allows users to merge the content of one image with the artistic style of another using deep learning, specifically leveraging the **VGG19** convolutional neural network.
 
@@ -8,17 +6,19 @@ This project was built with a focus on real-time feedback, streaming intermediat
 
 ---
 
-## 📸 Generated Artworks (Epoch Progression)
+## Web Interface Preview
 
-*USER: You can place your 5-image epoch progression grid here!*
+*USER: Insert your two web UI screenshots here.*
 
-| Epoch 1000 | Epoch 2000 | Epoch 3000 | Epoch 4000 | Epoch 5000 |
-| :---: | :---: | :---: | :---: | :---: |
-| ![img1](path) | ![img2](path) | ![img3](path) | ![img4](path) | ![img5](path) |
+**1. Uploading Images & Configuration**
+![UI Screenshot 1](path/to/screenshot1.png)
+
+**2. Live Generation & Final Results**
+![UI Screenshot 2](path/to/screenshot2.png)
 
 ---
 
-## 🧮 The Mathematics of Style Transfer
+## The Mathematics of Style Transfer
 
 This platform uses the classical Neural Style Transfer optimization technique proposed by Leon A. Gatys et al. (2015). We optimize a generated image by minimizing three distinct loss functions:
 
@@ -44,7 +44,72 @@ $$ \mathcal{L}_{total} = \alpha \mathcal{L}_{content} + \beta \mathcal{L}_{style
 
 ---
 
-## 🚀 Getting Started
+## Live Epoch Progression & Intermediate Frames
+
+A core feature of this platform is the ability to stream intermediate results to the frontend while the model trains. Instead of waiting blindly for thousands of epochs, the user can request a specific number of "Live Previews".
+
+### How It Works Under The Hood
+In `app/ml/pipeline.py`, the backend dynamically calculates exactly when to yield an image back to the frontend based on the user's `num_steps` and `intermediate_frames` inputs:
+
+```python
+# Calculate exactly how many steps to wait before sending the next image frame
+yield_interval = num_steps if intermediate_frames <= 0 else max(1, num_steps // (intermediate_frames + 1))
+
+for step in range(1, num_steps + 1):
+    loss = closure()
+    optimizer.step()
+    
+    # ... (Image optimization logic) ...
+    
+    # We yield progress exactly at the mathematically calculated interval
+    is_image_step = (step % yield_interval == 0) or (step == num_steps)
+    if is_image_step:
+        yield step, num_steps, tensor_to_image(generated_img)
+```
+This guarantees mathematically that the user will receive exactly the requested number of frames evenly spaced throughout the generation process, without blocking the GPU thread unnecessarily.
+
+### Epoch Progression Showcase
+
+*USER: Replace paths with your vertical progression images.*
+
+**Content Image**  
+![Content](data/content/city_skyline.jpg)
+
+**Style Image**  
+![Style](data/style/van_gogh_landscape.jpg)
+
+**Generation Timeline:**
+
+**Epoch 1000**  
+![Epoch 1000](path/to/epoch_1000.jpg)
+
+**Epoch 2000**  
+![Epoch 2000](path/to/epoch_2000.jpg)
+
+**Epoch 3000**  
+![Epoch 3000](path/to/epoch_3000.jpg)
+
+**Epoch 4000**  
+![Epoch 4000](path/to/epoch_4000.jpg)
+
+**Epoch 5000 (Final Result)**  
+![Epoch 5000](path/to/epoch_5000.jpg)
+
+---
+
+## More Examples
+
+*USER: Place your 3 normal examples here.*
+
+| Content Image | Style Image | Generated Result |
+| :---: | :---: | :---: |
+| ![Content 1](path) | ![Style 1](path) | ![Result 1](path) |
+| ![Content 2](path) | ![Style 2](path) | ![Result 2](path) |
+| ![Content 3](path) | ![Style 3](path) | ![Result 3](path) |
+
+---
+
+## Getting Started
 
 This application requires a GPU for reasonable generation times. You can run it on a free Cloud GPU or locally on your own machine.
 
@@ -79,7 +144,7 @@ If you have a gaming laptop or PC with a dedicated GPU and CUDA installed:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 - **Deep Learning**: PyTorch, Torchvision (VGG19)
 - **Backend API**: FastAPI (Python), Server-Sent Events (SSE) for streaming
 - **Frontend UI**: HTML5, Vanilla JavaScript, CSS3 Glassmorphism design
