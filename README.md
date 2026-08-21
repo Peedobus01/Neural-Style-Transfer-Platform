@@ -104,7 +104,7 @@ This guarantees mathematically that the user will receive exactly the requested 
 
 | Content Image | Style Image | Generated Result |
 | :---: | :---: | :---: |
-| <img src="Readme_images/Kapili.jng" width="250"> | <img src="Readme_images/kashi_kari.jpg" width="250"> | <img src="Readme_images/kapili1.png" width="250"> |
+| <img src="Readme_images/Kapili.jpg" width="250"> | <img src="Readme_images/kashi_kari.jpg" width="250"> | <img src="Readme_images/kapili1.png" width="250"> |
 | <img src="Readme_images/thor.jpeg" width="250"> | <img src="Readme_images/style2.jpg" width="250"> | <img src="Readme_images/thor1.png" width="250"> |
 | <img src="Readme_images/mega_raq.jpg" width="250"> | <img src="Readme_images/style3.jpg" width="250"> | <img src="Readme_images/mega_raq1.png" width="250"> |
 
