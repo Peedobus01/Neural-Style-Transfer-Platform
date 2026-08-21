@@ -21,9 +21,9 @@ app.add_middleware(
 
 pipeline = StyleTransferPipeline()
 
-# Ensure storage directories exist
-os.makedirs("storage/uploads", exist_ok=True)
-os.makedirs("storage/outputs", exist_ok=True)
+# Ensure showcase directories exist
+os.makedirs("Generated_Images/uploads", exist_ok=True)
+os.makedirs("Generated_Images/results", exist_ok=True)
 
 @app.post("/api/stylize")
 async def stylize_image(
@@ -31,13 +31,20 @@ async def stylize_image(
     style_image: UploadFile = File(...),
     alpha: float = Form(10.0),
     beta: float = Form(100000000.0),
-    preserve_colors: bool = Form(False),
     num_steps: int = Form(2500),
     intermediate_frames: int = Form(0)
 ):
     try:
         content_bytes = await content_image.read()
         style_bytes = await style_image.read()
+        
+        # Save uploads for showcase
+        import time
+        timestamp = int(time.time())
+        with open(f"Generated_Images/uploads/content_{timestamp}.jpg", "wb") as f:
+            f.write(content_bytes)
+        with open(f"Generated_Images/uploads/style_{timestamp}.jpg", "wb") as f:
+            f.write(style_bytes)
         
         def generate_sse():
             import base64
@@ -48,12 +55,15 @@ async def stylize_image(
                     style_bytes=style_bytes,
                     alpha=alpha,
                     beta=beta,
-                    preserve_colors=preserve_colors,
                     num_steps=num_steps,
                     intermediate_frames=intermediate_frames
                 ):
                     data = {"step": step, "total": total}
                     if img:
+                        # Save the generated image for showcase
+                        img_path = f"Generated_Images/results/output_epoch_{step}_{timestamp}.jpg"
+                        img.save(img_path, format='JPEG', quality=95)
+                        
                         img_byte_arr = io.BytesIO()
                         img.save(img_byte_arr, format='JPEG', quality=85)
                         b64 = base64.b64encode(img_byte_arr.getvalue()).decode('utf-8')
