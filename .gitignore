@@ -3,9 +3,7 @@ venv/
 __pycache__/
 *.pyc
 .env
-# Generated Images (Ignore contents)
-Generated_Images/uploads/*
-Generated_Images/results/*
+
 
 # OS
 .DS_Store

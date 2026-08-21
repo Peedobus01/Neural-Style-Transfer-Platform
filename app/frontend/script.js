@@ -37,12 +37,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const intermediateFrames = document.getElementById('intermediate-frames').value;
+        
+        let numSteps = parseInt(document.getElementById('num-steps').value) || 2500;
+        if (numSteps > 5000) numSteps = 5000;
+        if (numSteps < 100) numSteps = 100;
+        document.getElementById('num-steps').value = numSteps;
+
         const formData = new FormData();
         formData.append('content_image', contentInput.files[0]);
         formData.append('style_image', styleInput.files[0]);
         formData.append('alpha', document.getElementById('alpha').value);
         formData.append('beta', document.getElementById('beta').value);
-        formData.append('num_steps', document.getElementById('num-steps').value);
+        formData.append('num_steps', numSteps);
         formData.append('intermediate_frames', intermediateFrames);
 
         const loader = document.getElementById('loader');
