@@ -41,11 +41,11 @@ $$
 
 **Total Objective Function:** Optimized using the **Adam Optimizer**.
 
-$$
-\mathcal{L}_{total} = \alpha \mathcal{L}_{content} + \beta \mathcal{L}_{style} + \gamma \mathcal{L}_{TV}
-$$
+<p align="center">
+  <font size="4"><b>L<sub>total</sub> = &alpha; &middot; L<sub>content</sub> + &beta; &middot; L<sub>style</sub> + &gamma; &middot; L<sub>TV</sub></b></font>
+</p>
 
-*(Where $\alpha$, $\beta$, and $\gamma$ are weights controlled via the UI).*
+*(Where &alpha;, &beta;, and &gamma; are weights controlled via the UI).*
 
 ---
 
@@ -75,6 +75,8 @@ This guarantees mathematically that the user will receive exactly the requested 
 
 ### Epoch Progression Showcase
 
+*Merging the architectural beauty of the Chicago City Skyline with the classic, swirling artistic style of Vincent Van Gogh's Starry Night.*
+
 **Content Image**  
 <img src="Readme_images/content1.jpg" width="400">
 
@@ -102,11 +104,28 @@ This guarantees mathematically that the user will receive exactly the requested 
 
 ## More Examples
 
-| Content Image | Style Image | Generated Result |
-| :---: | :---: | :---: |
-| <img src="Readme_images/Kapili.jpg" width="250"> | <img src="Readme_images/kashi_kari.jpg" width="250"> | <img src="Readme_images/kapili1.png" width="250"> |
-| <img src="Readme_images/thor.jpeg" width="250"> | <img src="Readme_images/style2.jpg" width="250"> | <img src="Readme_images/thor1.png" width="250"> |
-| <img src="Readme_images/mega_raq.jpg" width="250"> | <img src="Readme_images/style3.jpg" width="250"> | <img src="Readme_images/mega_raq1.png" width="250"> |
+- **A vibrant reimagining of the Kapili building using intricate Kashi Kari geometric patterns.**
+<p align="center">
+  <b>content image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>style image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>generated image</b><br>
+  <img src="Readme_images/Kapili.jpg" height="220" width="220"> &nbsp;&nbsp;&nbsp; <font size="6"><b>+</b></font> &nbsp;&nbsp;&nbsp; <img src="Readme_images/kashi_kari.jpg" height="220" width="220"> &nbsp;&nbsp;&nbsp; <font size="6"><b>=</b></font> &nbsp;&nbsp;&nbsp; <img src="Readme_images/kapili1.png" height="220" width="220"><br>
+  <i>Kapili Building</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Kashi Kari Pattern</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Kapili in Kashi Kari Style</i>
+</p>
+<br>
+
+- **Thor and Jane Foster infused with a chaotic, abstract, and deeply textured painting style.**
+<p align="center">
+  <b>content image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>style image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>generated image</b><br>
+  <img src="Readme_images/thor.jpeg" height="220" width="220"> &nbsp;&nbsp;&nbsp; <font size="6"><b>+</b></font> &nbsp;&nbsp;&nbsp; <img src="Readme_images/style2.jpg" height="220" width="220"> &nbsp;&nbsp;&nbsp; <font size="6"><b>=</b></font> &nbsp;&nbsp;&nbsp; <img src="Readme_images/thor1.png" height="220" width="220"><br>
+  <i>Thor & Jane Foster</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Abstract Painting</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Stylized Result</i>
+</p>
+<br>
+
+- **The legendary Pokémon Mega Rayquaza re-envisioned as a mesmerizing, flowing blue fluid artwork.**
+<p align="center">
+  <b>content image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>style image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>generated image</b><br>
+  <img src="Readme_images/mega_raq.jpg" height="220" width="220"> &nbsp;&nbsp;&nbsp; <font size="6"><b>+</b></font> &nbsp;&nbsp;&nbsp; <img src="Readme_images/style3.jpg" height="220" width="220"> &nbsp;&nbsp;&nbsp; <font size="6"><b>=</b></font> &nbsp;&nbsp;&nbsp; <img src="Readme_images/mega_raq1.png" height="220" width="220"><br>
+  <i>Mega Rayquaza</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Blue Fluid Art</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Stylized Result</i>
+</p>
 
 ---
 
