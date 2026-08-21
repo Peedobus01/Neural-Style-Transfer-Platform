@@ -1,20 +1,16 @@
 # Neural Style Transfer Platform
 
-A high-performance, production-ready Neural Style Transfer (NST) web application built using **PyTorch**, **FastAPI**, and a **Vanilla JS Glassmorphism UI**. This platform allows users to merge the content of one image with the artistic style of another using deep learning, specifically leveraging the **VGG19** convolutional neural network.
+A high-performance, production-ready Neural Style Transfer (NST) web application built using **PyTorch**, **FastAPI**, and a **Vanilla JS Glassmorphism UI**. This platform allows users to merge the content of one image with the artistic style of another using deep learning, specifically leveraging the **VGG19** convolutional neural network. 
 
-This project was built with a focus on real-time feedback, streaming intermediate generation epochs directly to a beautiful frontend UI over SSE (Server-Sent Events).
+This project was built with a focus on real-time feedback, streaming intermediate generation epochs directly to a beautiful frontend UI over SSE (Server-Sent Events), and utilizes the highly efficient **Adam Optimizer** to achieve high-quality style blending in seconds.
 
 ---
 
-## Web Interface Preview
+## Web Dashboard Preview
 
-*USER: Insert your two web UI screenshots here.*
-
-**1. Uploading Images & Configuration**
-![UI Screenshot 1](path/to/screenshot1.png)
-
-**2. Live Generation & Final Results**
-![UI Screenshot 2](path/to/screenshot2.png)
+| Upload Section & Configuration | Live Generation & Results |
+| :---: | :---: |
+| <img src="Readme_images/upload_preview.png" width="400"> | <img src="Readme_images/results_preview.png" width="400"> |
 
 ---
 
@@ -25,20 +21,29 @@ This platform uses the classical Neural Style Transfer optimization technique pr
 ### 1. Content Loss
 We extract high-level feature maps from the `conv4_2` layer of VGG19. The content loss is the Mean Squared Error (MSE) between the feature maps of the original content image and the generated image.
 
-$$ \mathcal{L}_{content} = \frac{1}{2} \sum_{i,j} \left( F_{i,j}^{generated} - P_{i,j}^{content} \right)^2 $$
+$$
+\mathcal{L}_{content} = \frac{1}{2} \sum_{i,j} \left( F_{i,j}^{generated} - P_{i,j}^{content} \right)^2
+$$
 
 ### 2. Style Loss
 Style is represented by the correlation between different filter responses across the layers of the network (`conv1_1` through `conv5_1`). This correlation is given by the **Gram Matrix** ($G$). The style loss is the MSE between the Gram matrices of the style image and the generated image across multiple layers.
 
-$$ \mathcal{L}_{style} = \sum_{l=0}^{L} w_l \frac{1}{4N_l^2 M_l^2} \sum_{i,j} \left( G_{i,j}^{generated} - A_{i,j}^{style} \right)^2 $$
+$$
+\mathcal{L}_{style} = \sum_{l=0}^{L} w_l \frac{1}{4N_l^2 M_l^2} \sum_{i,j} \left( G_{i,j}^{generated} - A_{i,j}^{style} \right)^2
+$$
 
 ### 3. Total Variation (TV) Loss
 To ensure the generated image remains visually smooth and less noisy, a Total Variation loss is applied to penalize high-frequency artifacts (pixel-to-pixel variance).
 
-$$ \mathcal{L}_{TV} = \sum_{i,j} \left( (x_{i,j+1} - x_{i,j})^2 + (x_{i+1,j} - x_{i,j})^2 \right) $$
+$$
+\mathcal{L}_{TV} = \sum_{i,j} \left( (x_{i,j+1} - x_{i,j})^2 + (x_{i+1,j} - x_{i,j})^2 \right)
+$$
 
-**Total Objective Function**: Optimized using the **Adam Optimizer**.
-$$ \mathcal{L}_{total} = \alpha \mathcal{L}_{content} + \beta \mathcal{L}_{style} + \gamma \mathcal{L}_{TV} $$
+**Total Objective Function:** Optimized using the **Adam Optimizer**.
+
+$$
+\mathcal{L}_{total} = \alpha \mathcal{L}_{content} + \beta \mathcal{L}_{style} + \gamma \mathcal{L}_{TV}
+$$
 
 *(Where $\alpha$, $\beta$, and $\gamma$ are weights controlled via the UI).*
 
@@ -70,42 +75,38 @@ This guarantees mathematically that the user will receive exactly the requested 
 
 ### Epoch Progression Showcase
 
-*USER: Replace paths with your vertical progression images.*
-
 **Content Image**  
-![Content](data/content/city_skyline.jpg)
+<img src="data/content/city_skyline.jpg" width="400">
 
 **Style Image**  
-![Style](data/style/van_gogh_landscape.jpg)
+<img src="data/style/van_gogh_landscape.jpg" width="400">
 
 **Generation Timeline:**
 
 **Epoch 1000**  
-![Epoch 1000](path/to/epoch_1000.jpg)
+<img src="Readme_images/epoch_1000.jpg" width="400">
 
 **Epoch 2000**  
-![Epoch 2000](path/to/epoch_2000.jpg)
+<img src="Readme_images/epoch_2000.jpg" width="400">
 
 **Epoch 3000**  
-![Epoch 3000](path/to/epoch_3000.jpg)
+<img src="Readme_images/epoch_3000.jpg" width="400">
 
 **Epoch 4000**  
-![Epoch 4000](path/to/epoch_4000.jpg)
+<img src="Readme_images/epoch_4000.jpg" width="400">
 
 **Epoch 5000 (Final Result)**  
-![Epoch 5000](path/to/epoch_5000.jpg)
+<img src="Readme_images/epoch_5000.jpg" width="400">
 
 ---
 
 ## More Examples
 
-*USER: Place your 3 normal examples here.*
-
 | Content Image | Style Image | Generated Result |
 | :---: | :---: | :---: |
-| ![Content 1](path) | ![Style 1](path) | ![Result 1](path) |
-| ![Content 2](path) | ![Style 2](path) | ![Result 2](path) |
-| ![Content 3](path) | ![Style 3](path) | ![Result 3](path) |
+| <img src="Readme_images/content1.png" width="250"> | <img src="Readme_images/style1.png" width="250"> | <img src="Readme_images/result1.png" width="250"> |
+| <img src="Readme_images/content2.png" width="250"> | <img src="Readme_images/style2.png" width="250"> | <img src="Readme_images/result2.png" width="250"> |
+| <img src="Readme_images/content3.png" width="250"> | <img src="Readme_images/style3.png" width="250"> | <img src="Readme_images/result3.png" width="250"> |
 
 ---
 
