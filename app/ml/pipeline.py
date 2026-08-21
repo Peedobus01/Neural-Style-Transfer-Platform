@@ -9,7 +9,7 @@ class StyleTransferPipeline:
         self.device = torch.device(device if device else ("cuda" if torch.cuda.is_available() else "cpu"))
         self.feature_extractor = VGGFeatureExtractor().to(self.device).eval()
         
-    def run_stream(self, content_bytes, style_bytes, alpha=1e4, beta=1e2, tv_weight=1e-5, preserve_colors=False, num_steps=100, optimizer_type="adam", noise_ratio=0.0, intermediate_frames=0):
+    def run_stream(self, content_bytes, style_bytes, alpha=1e4, beta=1e2, tv_weight=1e-5, num_steps=100, noise_ratio=0.0, intermediate_frames=0):
         content_img = load_image(content_bytes).to(self.device)
         shape = (content_img.shape[2], content_img.shape[3])
         style_img = load_image(style_bytes, shape=shape).to(self.device)
@@ -29,25 +29,14 @@ class StyleTransferPipeline:
         else:
             generated_img = content_img.clone().requires_grad_(True).to(self.device)
         
-        optimizer = get_optimizer(generated_img, optimizer_type=optimizer_type)
+        optimizer = get_optimizer(generated_img)
         closure = get_closure(optimizer, generated_img, self.feature_extractor, content_features, style_grams, style_weights, alpha, effective_beta, tv_weight)
         
         yield_interval = num_steps if intermediate_frames <= 0 else max(1, num_steps // (intermediate_frames + 1))
         
-        if optimizer_type.lower() == "lbfgs":
-            run = [0]
-            while run[0] <= num_steps:
-                def opt_closure():
-                    loss = closure()
-                    if run[0] % 20 == 0:
-                        print(f"Step {run[0]}: Total Loss = {loss.item():.4f}")
-                    run[0] += 1
-                    return loss
-                optimizer.step(opt_closure)
-        else:
-            for step in range(1, num_steps + 1):
-                loss = closure()
-                optimizer.step()
+        for step in range(1, num_steps + 1):
+            loss = closure()
+            optimizer.step()
                 
                 with torch.no_grad():
                     for c, (mean, std) in enumerate(zip([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])):
@@ -64,9 +53,6 @@ class StyleTransferPipeline:
                 
                 if is_progress_step:
                     yield step, num_steps, tensor_to_image(generated_img) if is_image_step else None
-            
-        if optimizer_type.lower() == "lbfgs":
-            yield num_steps, num_steps, tensor_to_image(generated_img)
 
     def run(self, *args, **kwargs):
         # A wrapper that just returns the final image for backward compatibility
