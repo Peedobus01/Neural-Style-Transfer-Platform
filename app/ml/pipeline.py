@@ -37,22 +37,21 @@ class StyleTransferPipeline:
         for step in range(1, num_steps + 1):
             loss = closure()
             optimizer.step()
-                
-                with torch.no_grad():
-                    for c, (mean, std) in enumerate(zip([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])):
-                        generated_img[:, c, :, :].clamp_((0.0 - mean) / std, (1.0 - mean) / std)
-                        
-                if step % 10 == 0 or step == num_steps:
-                    c_loss = getattr(closure, 'content_loss', 0)
-                    s_loss = getattr(closure, 'style_loss', 0)
-                    print(f"Epoch {step}: Total={loss.item():.2f} | Content={c_loss:.2f} | Style={s_loss:.2f}")
-                
-                # Yield progress updates and images
-                is_image_step = (step % yield_interval == 0) or (step == num_steps)
-                is_progress_step = (step % 10 == 0) or is_image_step
-                
-                if is_progress_step:
-                    yield step, num_steps, tensor_to_image(generated_img) if is_image_step else None
+            with torch.no_grad():
+                for c, (mean, std) in enumerate(zip([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])):
+                    generated_img[:, c, :, :].clamp_((0.0 - mean) / std, (1.0 - mean) / std)
+                    
+            if step % 10 == 0 or step == num_steps:
+                c_loss = getattr(closure, 'content_loss', 0)
+                s_loss = getattr(closure, 'style_loss', 0)
+                print(f"Epoch {step}: Total={loss.item():.2f} | Content={c_loss:.2f} | Style={s_loss:.2f}")
+            
+            # Yield progress updates and images
+            is_image_step = (step % yield_interval == 0) or (step == num_steps)
+            is_progress_step = (step % 10 == 0) or is_image_step
+            
+            if is_progress_step:
+                yield step, num_steps, tensor_to_image(generated_img) if is_image_step else None
 
     def run(self, *args, **kwargs):
         # A wrapper that just returns the final image for backward compatibility
