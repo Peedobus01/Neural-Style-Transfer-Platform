@@ -105,30 +105,29 @@ This guarantees mathematically that the user will receive exactly the requested 
 ## More Examples
 
 - **A vibrant reimagining of the Kapili building using intricate Kashi Kari geometric patterns.**
-<p align="center">
-  <b>content image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>style image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>generated image</b><br>
-  <img src="Readme_images/Kapili.jpg" height="250" width="250" align="middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="6"><b>+</b></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Readme_images/kashi_kari.jpg" height="250" width="250" align="middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="6"><b>=</b></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Readme_images/kapili1.png" height="250" width="250" align="middle"><br>
-  <br>
-  <i>Kapili Building</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Kashi Kari Pattern</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Kapili in Kashi Kari Style</i>
-</p>
+
+| content image | | style image | | generated image |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="Readme_images/Kapili.jpg" width="180" height="180"> | <h1>+</h1> | <img src="Readme_images/kashi_kari.jpg" width="180" height="180"> | <h1>=</h1> | <img src="Readme_images/kapili1.png" width="180" height="180"> |
+| *Kapili Building* | | *Kashi Kari Pattern* | | *Kapili in Kashi Kari Style* |
+
 <br>
 
 - **Thor and Jane Foster infused with a chaotic, abstract, and deeply textured painting style.**
-<p align="center">
-  <b>content image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>style image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>generated image</b><br>
-  <img src="Readme_images/thor.jpeg" height="250" width="250" align="middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="6"><b>+</b></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Readme_images/style2.jpg" height="250" width="250" align="middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="6"><b>=</b></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Readme_images/thor1.png" height="250" width="250" align="middle"><br>
-  <br>
-  <i>Thor & Jane Foster</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Abstract Painting</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Stylized Result</i>
-</p>
+
+| content image | | style image | | generated image |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="Readme_images/thor.jpeg" width="180" height="180"> | <h1>+</h1> | <img src="Readme_images/style2.jpg" width="180" height="180"> | <h1>=</h1> | <img src="Readme_images/thor1.png" width="180" height="180"> |
+| *Thor & Jane Foster* | | *Abstract Painting* | | *Stylized Result* |
+
 <br>
 
 - **The legendary Pokémon Mega Rayquaza re-envisioned as a mesmerizing, flowing blue fluid artwork.**
-<p align="center">
-  <b>content image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>style image</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>generated image</b><br>
-  <img src="Readme_images/mega_raq.jpg" height="250" width="250" align="middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="6"><b>+</b></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Readme_images/style3.jpg" height="250" width="250" align="middle"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font size="6"><b>=</b></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="Readme_images/mega_raq1.png" height="250" width="250" align="middle"><br>
-  <br>
-  <i>Mega Rayquaza</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Blue Fluid Art</i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i>Stylized Result</i>
-</p>
+
+| content image | | style image | | generated image |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="Readme_images/mega_raq.jpg" width="180" height="180"> | <h1>+</h1> | <img src="Readme_images/style3.jpg" width="180" height="180"> | <h1>=</h1> | <img src="Readme_images/mega_raq1.png" width="180" height="180"> |
+| *Mega Rayquaza* | | *Blue Fluid Art* | | *Stylized Result* |
 
 ---
 
