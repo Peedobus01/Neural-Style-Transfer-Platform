@@ -76,10 +76,10 @@ This guarantees mathematically that the user will receive exactly the requested 
 ### Epoch Progression Showcase
 
 **Content Image**  
-<img src="Readme_images/content1.png" width="400">
+<img src="Readme_images/content1.jpg" width="400">
 
 **Style Image**  
-<img src="Readme_images/style1.png" width="400">
+<img src="Readme_images/style1.jpg" width="400">
 
 **Generation Timeline:**
 
