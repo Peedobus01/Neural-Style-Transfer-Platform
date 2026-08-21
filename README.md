@@ -10,7 +10,7 @@ This project was built with a focus on real-time feedback, streaming intermediat
 
 | Upload Section & Configuration | Live Generation & Results |
 | :---: | :---: |
-| <img src="Readme_images/upload_preview.png" width="400"> | <img src="Readme_images/results_preview.png" width="400"> |
+| <img src="Readme_images/web_1.png" width="400"> | <img src="Readme_images/web_2.png" width="400"> |
 
 ---
 
@@ -76,27 +76,27 @@ This guarantees mathematically that the user will receive exactly the requested 
 ### Epoch Progression Showcase
 
 **Content Image**  
-<img src="data/content/city_skyline.jpg" width="400">
+<img src="Readme_images/content1.png" width="400">
 
 **Style Image**  
-<img src="data/style/van_gogh_landscape.jpg" width="400">
+<img src="Readme_images/style1.png" width="400">
 
 **Generation Timeline:**
 
-**Epoch 1000**  
-<img src="Readme_images/epoch_1000.jpg" width="400">
+**Epoch 100**  
+<img src="Readme_images/epoch100.png" width="400">
 
-**Epoch 2000**  
-<img src="Readme_images/epoch_2000.jpg" width="400">
+**Epoch 500**  
+<img src="Readme_images/epoch500.png" width="400">
+
+**Epoch 1000**  
+<img src="Readme_images/epoch1000.png" width="400">
 
 **Epoch 3000**  
-<img src="Readme_images/epoch_3000.jpg" width="400">
-
-**Epoch 4000**  
-<img src="Readme_images/epoch_4000.jpg" width="400">
+<img src="Readme_images/epoch3000.png" width="400">
 
 **Epoch 5000 (Final Result)**  
-<img src="Readme_images/epoch_5000.jpg" width="400">
+<img src="Readme_images/epoch5000.png" width="400">
 
 ---
 
