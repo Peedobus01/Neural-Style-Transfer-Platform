@@ -4,11 +4,11 @@ __pycache__/
 *.pyc
 .env
 
-# Storage
-storage/uploads/*
-!storage/uploads/.keep
-storage/outputs/*
-!storage/outputs/.keep
+# Generated Images (Keep folders but ignore contents)
+Generated_Images/uploads/*
+!Generated_Images/uploads/.gitkeep
+Generated_Images/results/*
+!Generated_Images/results/.gitkeep
 
 # OS
 .DS_Store
